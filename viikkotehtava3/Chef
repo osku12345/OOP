@@ -1,0 +1,3 @@
+#include "Chef"
+
+Chef::Chef() {}
