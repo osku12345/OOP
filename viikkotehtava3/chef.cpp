@@ -1,22 +1,46 @@
-#include "Chef.h"
+#include "chef.h"
 #include <iostream>
 
-using namespace std;
-
-Chef::Chef(string name) : chefName(name) {
-    cout << "Chef " << chefName << " constructor" << endl;
+chef::chef()
+{
+    cout << "Olen default konstruktorissa!" << endl;
+}
+chef::chef(string cN)
+{
+    cout << "Olen input konstruktorissa!" << endl;
+    chefName = cN;
+}
+chef::~chef()
+{
+    cout << "Olen default desktruktorissa!" << endl;
 }
 
-Chef::~Chef() {
-    cout << "Chef " << chefName << " destructor" << endl;
+int chef::makeSalad(int numberOfItems)
+{
+    cout << "Olen salaattifunktiossa!" << endl;
+    // int numberOfPortions = numberOfItems/5;
+    cout << "Annoit: " << numberOfItems << " ainesta" << endl;
+    cout << "Siita saadaan: " << numberOfItems/5 <<" salaattiannosta" << endl;
+    return numberOfItems/5;
+}
+int chef::makeSoup(int numberOfItems)
+{
+    cout << "Olen soppafunktiossa!" << endl;
+    cout << "Annoit: " << numberOfItems << " ainesta" << endl;
+    cout << "Siita saadaan: " << numberOfItems/5 <<" soppa-annosta" << endl;
+
+    return numberOfItems/3;
 }
 
-int Chef::makeSalad(int ingredients) {
-    cout << "Chef " << chefName << " makes salad" << endl;
-    return ingredients / 5;
+string chef::getName()
+{
+    cout << "Olen getterissa!" << endl;
+    cout << "Kokin nimi on: " << chefName << endl;
+    return chefName;
 }
 
-int Chef::makeSoup(int ingredients) {
-    cout << "Chef " << chefName << " makes soup" << endl;
-    return ingredients / 3;
+void chef::setName(string cN)
+{
+    cout << "Olen setterissa!" << endl;
+    chefName = cN;
 }

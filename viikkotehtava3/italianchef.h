@@ -1,21 +1,21 @@
 #ifndef ITALIANCHEF_H
 #define ITALIANCHEF_H
-
-
-#include "Chef.h"
 #include <string>
+#include <chef.h>
+using namespace std;
 
-class ItalianChef : public Chef {
-private:
-    std::string password;
-    int makePizza(int flour, int water);
-
+class italianChef : public chef
+{
 public:
-    ItalianChef(std::string name);
-    ~ItalianChef();
-
-    bool askSecret(std::string pw, int flour, int water);
+    italianChef();
+    italianChef(string);
+    ~italianChef();
+    bool askSecret(string, int, int);
+private:
+    int water;
+    int flour;
+    string password = "pizza";
+    int makePizza();
 };
-
 
 #endif // ITALIANCHEF_H

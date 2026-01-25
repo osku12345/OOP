@@ -1,28 +1,52 @@
-#include "ItalianChef.h"
+#include "italianchef.h"
 #include <iostream>
-#include <algorithm>
 
-using namespace std;
-
-ItalianChef::ItalianChef(string name)
-    : Chef(name), password("pizza") {
-    cout << "ItalianChef " << chefName << " constructor" << endl;
+italianChef::italianChef()
+{
+    cout << "Olen Italiandefaultkonstruktorissa!" << endl;
+}
+italianChef::italianChef(string cN) : chef(cN)
+{
+    cout << "Olen Italianinputkonstruktorissa!" << endl;
+    //    chefName = cN;
+}
+italianChef::~italianChef()
+{
+    cout << "Olen Italiandefaultdestruktorissa!" << endl;
 }
 
-ItalianChef::~ItalianChef() {
-    cout << "ItalianChef " << chefName << " destructor" << endl;
-}
+/* Jäsenfunktio askSecret() tarkistaa onko parametrinä annettu salasana ok, ja jos on, kutsuu makePizza()-jäsenfunktiota.
+ * Muut parametrit ovat ainesten eli jauhojen (flour) ja veden (water) määrä.
+ * Funktio palauttaa true/false sen mukaan oliko salasana oikea.
+ */
 
-int ItalianChef::makePizza(int flour, int water) {
-    cout << "ItalianChef " << chefName << " makes pizza" << endl;
-    return min(flour / 5, water / 5);
-}
+bool italianChef::askSecret(string pw, int amountOfWater, int amountOfFlour)
+{
+    int numberOfPizzas;
 
-bool ItalianChef::askSecret(string pw, int flour, int water) {
-    if (pw == password) {
-        cout << "Pizzas made: " << makePizza(flour, water) << endl;
-        return true;
+    if (pw.compare(password) != 0)
+    {
+        cout << "Vaarin salasana!" << endl;
+        return false;
     }
-    cout << "Wrong password!" << endl;
-    return false;
+
+    water = amountOfWater;
+    flour = amountOfFlour;
+    numberOfPizzas = makePizza();
+    cout << "Salasana ok" << endl;
+    cout << "Saatiin tehtya: " << numberOfPizzas << " pizzaa" << endl;
+    return true;
+}
+
+int italianChef::makePizza()
+{
+    cout << "Tehdaanpa pizzaa!" << endl;
+    cout << "Jauhoja on: " << flour << " vetta on: " << water << endl;
+
+    int pizzasFromFlour = flour / 5;
+    int pizzasFromWater = water / 5;
+
+    int numberOfPizzas = min(pizzasFromFlour, pizzasFromWater);
+
+    return numberOfPizzas;
 }
